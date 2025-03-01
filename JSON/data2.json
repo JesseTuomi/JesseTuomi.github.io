@@ -1,0 +1,23 @@
+{
+    "toteutus": {
+      "nimi": "Digitekniikat",
+      "koodi": "DIG007AS2A-3014",
+      "osallistujat": {
+        "lukumaara": 5,
+        "nimet": [
+          "Anna Virtanen",
+          "Mikko Korhonen",
+          "Sara Lehtinen",
+          "Jussi Mäkinen",
+          "Laura Niemi"
+        ]
+      },
+      "aikataulu": {
+        "alkamisaika": "2025-01-13",
+        "loppumisaika": "2025-03-14",
+        "kesto_viikkoina": 8
+      },
+      "kuva": "https://example.com/kuva.jpg"
+    }
+  }
+  

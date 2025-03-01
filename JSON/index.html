@@ -2,23 +2,56 @@
 
 <html lang="fi">
 <head>
-  <title>JSON-käsittely</title>  
+  <title>JSON-käsittely</title> 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
    </head>
 <body>
+  <a href="toteutus.html" class="button">Siirry toteutus-sivulle</a>
   <h1>JSON-käsittely</h1>
+  <div id="vastaus"> </div>
+<script>
+
+function kerro(data){
+
+var teksti = "";
+
+teksti = "<h1>" + data.otsikko + "</h1>";
+
+teksti = teksti +"<p>"+"<b>"+"opintojakso" +"</b>"+"<br>"
+
++ data.opintojakso.nimi + "<br>"
+
++ data.opintojakso.tunnus + "</p>";
+
+document.getElementById("vastaus").innerHTML = teksti;
+
+}
+
+fetch('data1.json')
+
+.then(function (response) {
+
+return response.json();
+
+})
+
+.then(function (responseJson) {
+
+kerro(responseJson);
+
+})
 
 
-  <h1>JavaScript Fetch API</h1>
-  <h2>The fetch() Method</h2>
-  <p id="demo">vastaus</p>
+// Jos tuli jokin virhe
+
+.catch(function (error) {
+
+document.getElementById("vastaus").innerHTML = "<p>Tietoa ei pystytä hakemaan</p>";
+
+})
   
-  <script>
-  let file = "data1.json"
-  fetch (file)
-  .then(x => x.text())
-  .then(y => document.getElementById("demo").innerHTML = y);
   </script>
   
   </body>

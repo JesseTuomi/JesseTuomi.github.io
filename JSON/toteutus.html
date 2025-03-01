@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>JSON Data Sivut</title>
+    <style>
+        nav {
+            background-color: #333;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        #content {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="button">Siirry pääsivulle</a>
+    <div id="toteutus">
+        <h1 id="nimi"></h1>
+        <p><strong>Koodi:</strong> <span id="koodi"></span></p>
+        <p><strong>Osallistujat:</strong> <span id="osallistujat-lukumaara"></span></p>
+        <ul id="osallistujat-nimet"></ul>
+        <p><strong>Alkamisaika:</strong> <span id="alkamisaika"></span></p>
+        <p><strong>Loppumisaika:</strong> <span id="loppumisaika"></span></p>
+        <p><strong>Kesto (viikkoina):</strong> <span id="kesto"></span></p>
+        <img id="kuva" src="" alt="Kuva toteutuksesta" style="max-width: 300px;">
+    </div>
+
+    <script>
+        // JSON-tiedot
+        const data = {
+            "toteutus": {
+                "nimi": "Digitekniikat",
+                "koodi": "DIG007AS2A-3014",
+                "osallistujat": {
+                    "lukumaara": 5,
+                    "nimet": [
+                        "Anna Virtanen",
+                        "Mikko Korhonen",
+                        "Sara Lehtinen",
+                        "Jussi Mäkinen",
+                        "Laura Niemi"
+                    ]
+                },
+                "aikataulu": {
+                    "alkamisaika": "2025-01-13",
+                    "loppumisaika": "2025-03-14",
+                    "kesto_viikkoina": 8
+                },
+                "kuva": "https://www.haaga-helia.fi/sites/default/files/styles/embedded_media_16_10_max_978_x_611/public/image/2023-01/HH%2BKampus%2BPasila_L8A5345.jpg?itok=uXdEc0Eu"
+            }
+        };
+
+        // Tietojen lisääminen HTML-sivulle
+        document.getElementById('nimi').textContent = data.toteutus.nimi;
+        document.getElementById('koodi').textContent = data.toteutus.koodi;
+        document.getElementById('osallistujat-lukumaara').textContent = data.toteutus.osallistujat.lukumaara;
+
+        const osallistujatLista = document.getElementById('osallistujat-nimet');
+        data.toteutus.osallistujat.nimet.forEach(nimi => {
+            const li = document.createElement('li');
+            li.textContent = nimi;
+            osallistujatLista.appendChild(li);
+        });
+
+        document.getElementById('alkamisaika').textContent = data.toteutus.aikataulu.alkamisaika;
+        document.getElementById('loppumisaika').textContent = data.toteutus.aikataulu.loppumisaika;
+        document.getElementById('kesto').textContent = data.toteutus.aikataulu.kesto_viikkoina;
+
+        document.getElementById('kuva').src = data.toteutus.kuva;
+    </script>
+</body>
+</html>
